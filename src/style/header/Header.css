@@ -1,9 +1,9 @@
 .header {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2), 0 4px 20px rgba(255, 0, 255, 0.2);
-  width: 100%;
-  
+  padding: 1.3rem 2rem;
+  margin: 2px;
+  width: auto;
+   box-shadow: 10px 49px 150px 0px purple;
 }
 
 .header-content {

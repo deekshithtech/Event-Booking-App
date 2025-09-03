@@ -61,8 +61,7 @@ const Payment = ({ events }) => {
     localStorage.setItem("events", JSON.stringify(updatedEvents))
     
     setShowModal(true)
-    
-    // window.location.href = '/'
+
   }
 
   if (!event) {
@@ -110,7 +109,7 @@ const Payment = ({ events }) => {
               name="name" 
               value={user.name} 
               onChange={handleChange} 
-              placeholder="John Doe" 
+              placeholder="Enter Your Name" 
               required 
             />
 
@@ -120,7 +119,7 @@ const Payment = ({ events }) => {
               name="email" 
               value={user.email} 
               onChange={handleChange} 
-              placeholder="john@example.com" 
+              placeholder="enter_your_email@example.com" 
               required 
             />
 
@@ -208,7 +207,7 @@ const Payment = ({ events }) => {
     totalPrice={totalPrice}
     onClose={() => {
       setShowModal(false)
-      window.location.href = '/' // redirect home after closing modal
+      window.location.href = '/' 
     }}
   />
 )}

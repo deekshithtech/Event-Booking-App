@@ -2,12 +2,12 @@
   background: #2a2a3d;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 3px 3px rgba(38, 242, 79, 0.5);
+  box-shadow: 0 3px 5px rgba(38, 242, 79, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-   transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px) scale(1.02);
 }
 
 .event-card:hover {
@@ -93,19 +93,13 @@
 
 .event-price {
   font-weight: 700;
-  background: linear-gradient(90deg, #ff6ec4, #6c63ff);
+  background: linear-gradient(90deg, #6effc0, #6c63ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .btn {
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(90deg, #6c63ff, gray);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {

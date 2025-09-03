@@ -45,7 +45,6 @@ const Home = ({ filters, onFilterChange }) => {
   return (
     <div>
       <section className="hero">
-        <div className="container">
           <div className="hero-content">
             <h1>Discover Amazing Events</h1>
             <p>Find and book tickets for the best events in your city</p>
@@ -59,12 +58,14 @@ const Home = ({ filters, onFilterChange }) => {
               <button type="submit" className="btn">Search</button>
             </form>
           </div>
-        </div>
+      
       </section>
-
+{/* ================= Only Filter Section ============================= */}
+<div className='filter-bg'>
       <section className="filters-section"> 
-        <div className="container">
+        <div className="container" >
           <div className="filters">
+
             <div className="filter-group">
               <label htmlFor="type-filter">Event Type</label>
               <select 
@@ -114,6 +115,8 @@ const Home = ({ filters, onFilterChange }) => {
           </div>
         </div>
       </section>
+</div>
+
 
       <section className="events-section">
         <h2 className="section-title">Upcoming Events</h2>

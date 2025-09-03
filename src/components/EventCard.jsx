@@ -43,16 +43,18 @@ const EventCard = ({ event }) => {
           <span className="icon">👤</span>
           Organized by {event.organizer}
         </p>
-<p className="event-seats">
-  🎟️ Total Seats: <span style={{ color: 'yellow' }}>{event.totalSeats}</span>
-</p>
-<p className="event-seats">
-  🎟️ Available Seats:{" "}
-  <span style={{ color: event.availableSeats === 0 ? 'red' : 'green' }}>
-    {event.availableSeats === 0 ? "Ticket Already Sold" : event.availableSeats}
-  </span>
-</p>
-
+        <p className="event-seats">
+          🎟️ Total Seats:{" "}
+          <span style={{ color: "yellow" }}>{event.totalSeats}</span>
+        </p>
+        <p className="event-seats">
+          🪑 Available Seats:{" "}
+          <span style={{ color: event.availableSeats === 0 ? "red" : "green" }}>
+            {event.availableSeats === 0
+              ? "Ticket Already Sold"
+              : event.availableSeats}
+          </span>
+        </p>
 
         <div className="event-footer">
           <span className="event-price">Price : &#8377;{event.price}.00</span>

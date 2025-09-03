@@ -1,50 +1,34 @@
-/* ---------- Container ---------- */
 .page-container {
+  min-height: 90vh;
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 25px;
   padding: 20px;
   font-family: 'Inter', sans-serif;
-  background-color: #f3f4f6; /* soft gray background */
-  min-height: 100vh;
+  background-color: #f3f4f6;
+ 
 }
-
-/* ---------- Left Section - Add Event Form (Scrollable) ---------- */
+/* =============Left_Side Section============= */
 .left-section {
   flex: 0 0 40%; 
-  background-color: #ffffff;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-
-  max-height: 80vh;
+  background-color: #d1c9c9;
+  padding: 25px;  
+  border-radius: 10px;
+  box-shadow: 0 6px 10px green;
+  max-height: 84vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #3b82f6 #e5e7eb;
 }
 
-.left-section::-webkit-scrollbar {
-  width: 8px;
-}
-
-.left-section::-webkit-scrollbar-track {
-  background: #e5e7eb;
-  border-radius: 10px;
-}
-
-.left-section::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 10px;
-}
-
 .left-section h2 {
   margin-bottom: 20px;
-  color: #1f2937;
+  color: rgb(76, 74, 74) ;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-/* Inputs & Textarea */
+/* ========== Inputs & Textarea =========== */
 .left-section form {
   display: flex;
   flex-direction: column;
@@ -69,34 +53,31 @@
   box-shadow: 0 0 8px rgba(59,130,246,0.3);
 }
 
-/* Validation styles */
 .left-section input:invalid {
   border-color: #ef4444;
 }
 
 .left-section input:valid {
-  border-color: #10b981;
+  border-color: green;
 }
 
-/* Buttons */
 .left-section button {
-  padding: 14px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
-  border: none;
-  border-radius: 12px;
+   padding: 0.7rem 1.8rem;
+  font-family: 'Orbitron', sans-serif;
   font-weight: 700;
+  color: #00ffff;
+  background: #111;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s;
+  transition: 0.3s;
 }
 
 .left-section button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+  transform: translateY(-3px);
+  background: rgb(171, 77, 186);
 }
 
-/* Schedule & Participants */
 .left-section h4 {
   margin-top: 10px;
   font-size: 1rem;
@@ -110,16 +91,18 @@
   margin-top: 5px;
 }
 
-/* ---------- Right Section - Event History Table ---------- */
+/* =============Right_Side Section============= */
 .right-section {
   flex: 0 0 59%;
-  background-color: #ffffff;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  overflow-x: auto;
-  max-height: 80vh;
+  background-color: #d1c9c9;
+  padding: 25px;  
+  border-radius: 10px;
+  box-shadow: 0 6px 10px green;
+  max-height: 84vh;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb;
+
 }
 
 .right-section h2 {
@@ -129,37 +112,51 @@
   font-weight: 700;
 }
 
-/* Table Styling */
+/* ============= Table Styling =============== */
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 
-th, td {
-  padding: 12px 10px;
-  text-align: center;
-  font-size: 14px;
-  word-wrap: break-word;
+thead {
+  background: linear-gradient(90deg, #6881a9, #06b6d4);
+  color: #fff;
 }
 
 thead th {
-  background-color: #3b82f6;
-  color: white;
+  padding: 14px 10px;
   font-weight: 600;
+  text-align: center;
   position: sticky;
   top: 0;
   z-index: 1;
 }
 
+tbody tr {
+  border-bottom: 1px solid rgb(161, 158, 158);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
 tbody tr:nth-child(even) {
-  background-color: #f9fafb;
+  background-color: #f3f4f6;
 }
 
 tbody tr:hover {
   background-color: #e0f2fe;
-  transform: scale(1.01);
-  transition: all 0.2s;
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+td {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #1f2937;
+  word-wrap: break-word;
 }
 
 /* Action icons */
@@ -172,10 +169,10 @@ tbody tr:hover {
 
 .action-icon:hover {
   opacity: 0.8;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
-/* Responsive */
+/* =================== Responsive ================= */
 @media (max-width: 1024px) {
   .page-container {
     flex-direction: column;

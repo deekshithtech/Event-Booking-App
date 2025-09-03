@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./ClientPage.css";
+import "../style/main/ClientPage.css";
 
 const ClientPage = () => {
   const [events, setEvents] = useState(() => {
@@ -189,7 +189,7 @@ const ClientPage = () => {
             onChange={handleChange}
           />
           <input
-            type="text"
+            
             name="time"
             placeholder="Time"
             value={currentEvent.time}
@@ -249,7 +249,7 @@ const ClientPage = () => {
               onChange={(e) => setScheduleInput(e.target.value)}
             />
             <button type="button" onClick={handleAddSchedule}>
-              + Add
+              +Add
             </button>
           </div>
           <ul>
@@ -299,7 +299,7 @@ const ClientPage = () => {
         </form>
       </div>
 
-      {/* Right Section: Table */}
+      {/* ============ Right Section: Table ================= */}
       <div className="right-section">
         <h2>Event Added History</h2>
         <table>
@@ -345,7 +345,7 @@ const ClientPage = () => {
                     )}
                   </td>
                   <td>
-                    <div style={{display:"flex"}}>
+                    <div style={{display:"flex",}}>
                     <span
                       className="action-icon"
                       onClick={() => handleEdit(ev)}
