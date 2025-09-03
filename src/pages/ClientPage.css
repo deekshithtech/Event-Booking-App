@@ -1,0 +1,198 @@
+/* ---------- Container ---------- */
+.page-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6; /* soft gray background */
+  min-height: 100vh;
+}
+
+/* ---------- Left Section - Add Event Form (Scrollable) ---------- */
+.left-section {
+  flex: 0 0 40%; 
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb;
+}
+
+.left-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.left-section::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.left-section::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 10px;
+}
+
+.left-section h2 {
+  margin-bottom: 20px;
+  color: #1f2937;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Inputs & Textarea */
+.left-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.left-section input,
+.left-section textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  background-color: #f9fafb;
+  transition: all 0.3s;
+}
+
+.left-section input:focus,
+.left-section textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Validation styles */
+.left-section input:invalid {
+  border-color: #ef4444;
+}
+
+.left-section input:valid {
+  border-color: #10b981;
+}
+
+/* Buttons */
+.left-section button {
+  padding: 14px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.left-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+}
+
+/* Schedule & Participants */
+.left-section h4 {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.left-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+/* ---------- Right Section - Event History Table ---------- */
+.right-section {
+  flex: 0 0 59%;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  overflow-x: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.right-section h2 {
+  margin-bottom: 20px;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+thead th {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:hover {
+  background-color: #e0f2fe;
+  transform: scale(1.01);
+  transition: all 0.2s;
+}
+
+/* Action icons */
+.action-icon {
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.action-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .page-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .left-section, .right-section {
+    width: 100%;
+    flex: unset;
+  }
+}
+
+@media (max-width: 640px) {
+  .left-section form {
+    gap: 12px;
+  }
+  th, td {
+    padding: 8px 5px;
+    font-size: 13px;
+  }
+}
