@@ -17,12 +17,10 @@ const ClientPage = () => {
     organizer: "",
     price: "",
     totalSeats: "",
-    availableSeats: "", // Add availableSeats field
     description: "",
     schedule: [],
     participants: [],
     image: "",
-    bookedSeats: [], // Track which seats are booked
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -33,12 +31,10 @@ const ClientPage = () => {
     image: "",
   });
 
-  // 🔹 Save events to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("events", JSON.stringify(events));
   }, [events]);
 
-  // Initialize availableSeats when totalSeats changes
   useEffect(() => {
     if (currentEvent.totalSeats && !currentEvent.availableSeats) {
       setCurrentEvent(prev => ({
@@ -53,7 +49,6 @@ const ClientPage = () => {
     const { name, value } = e.target;
     setCurrentEvent(prev => {
       if (name === "totalSeats") {
-        // When total seats change, reset available seats and booked seats
         const total = parseInt(value) || 0;
         return {
           ...prev,
@@ -95,10 +90,9 @@ const ClientPage = () => {
       setIsEditing(false);
     } else {
       if (events.length >= 10) {
-        alert("❌ You can only store a maximum of 10 events.");
+        alert(" You can only store a maximum of 10 events.");
         return;
       }
-      // Ensure availableSeats is set correctly when creating new event
       const newEvent = {
         ...currentEvent,
         availableSeats: currentEvent.totalSeats,
@@ -135,25 +129,6 @@ const ClientPage = () => {
       setEvents(events.filter((ev) => ev.id !== id));
     }
   };
-
-  // Function to book a seat
-  const bookSeat = (eventId, seatIndex) => {
-    setEvents(events.map(event => {
-      if (event.id === eventId) {
-        const updatedBookedSeats = [...event.bookedSeats];
-        updatedBookedSeats[seatIndex] = true;
-        
-        return {
-          ...event,
-          bookedSeats: updatedBookedSeats,
-          availableSeats: event.availableSeats - 1
-        };
-      }
-      return event;
-    }));
-  };
-
-
   return (
     <div className="page-container">
       <div className="left-section">

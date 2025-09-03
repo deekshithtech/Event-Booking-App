@@ -21,11 +21,9 @@ const BookingForm = ({ event, onBookingComplete }) => {
     setIsProcessing(true)
     setBookingStatus(null)
 
-    // Simulate API call
     try {
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      // Randomly determine success/failure for demo purposes
       const isSuccess = Math.random() > 0.3
       
       if (isSuccess) {
