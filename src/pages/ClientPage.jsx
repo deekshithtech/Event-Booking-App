@@ -214,6 +214,7 @@ const ClientPage = () => {
             name="price"
             placeholder="Price"
             value={currentEvent.price}
+             min={0}
             onChange={handleChange}
           />
           <input
@@ -222,6 +223,7 @@ const ClientPage = () => {
             placeholder="Total Seats"
             value={currentEvent.totalSeats}
             onChange={handleChange}
+             min={0}
             required
           />
           <textarea
