@@ -9,9 +9,9 @@ const Header = () => {
         <h1 className="logo">Event Master</h1>
         <nav className="nav">
           <a href="/">Home</a>
-          <a href="/event">Events</a>
+          <a href="/events">Events</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="/contact">Contact</a>
         </nav>
         <button className="login">USER Login | Register</button>
         <button className="login"  onClick={() => navigate('/client')}>Client Login</button>

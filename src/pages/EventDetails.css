@@ -284,6 +284,24 @@
 .legend-item .seat:hover {
   transform: none;
 }
+/* ==================Google Maps css============================= */
+.google-map {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.google-map:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
 
 
 @media (max-width: 968px) {

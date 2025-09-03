@@ -95,8 +95,8 @@ const Payment = ({ events }) => {
           <div className="payment-event-details">
             <p><strong>Selected Seats:</strong> {selectedSeats.map(seat => seat + 1).join(', ')}</p>
             <p><strong>Number of Tickets:</strong> {selectedSeats.length}</p>
-            <p><strong>Price per Ticket:</strong> ${event.price}</p>
-            <p><strong>Total Amount:</strong> ${totalPrice}</p>
+            <p><strong>Price per Ticket:</strong> ₹{event.price}</p>
+            <p><strong>Total Amount:</strong> ₹ {totalPrice}</p>
           </div>
           <div className="payment-icon">💳</div>
         </div>
@@ -188,11 +188,11 @@ const Payment = ({ events }) => {
               <h3>Order Summary</h3>
               <div className="summary-row">
                 <span>Tickets ({selectedSeats.length})</span>
-                <span>${event.price} × {selectedSeats.length}</span>
+                <span>₹{event.price} × {selectedSeats.length}</span>
               </div>
               <div className="summary-total">
                 <span>Total</span>
-                <span>${totalPrice}</span>
+                <span>₹{totalPrice}</span>
               </div>
             </div>
 

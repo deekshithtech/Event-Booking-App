@@ -1,10 +1,10 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import './EventDetails.css';
-import { useState } from 'react';
+import { useParams, Link, useNavigate } from "react-router-dom";
+import "./EventDetails.css";
+import { useState } from "react";
 
 const EventDetails = ({ events }) => {
   const { id } = useParams();
-  const event = events.find(e => e.id === id || e.id === parseInt(id));
+  const event = events.find((e) => e.id === id || e.id === parseInt(id));
   const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
 
@@ -14,23 +14,25 @@ const EventDetails = ({ events }) => {
         <div className="event-not-found">
           <h2>Event Not Found</h2>
           <p>The event you're looking for doesn't exist.</p>
-          <Link to="/" className="btn">Back to Events</Link>
+          <Link to="/" className="btn">
+            Back to Events
+          </Link>
         </div>
       </div>
     );
   }
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   const handleSeatSelection = (seatIndex) => {
     if (event.bookedSeats[seatIndex]) return; // Can't select already booked seat
-    
-    setSelectedSeats(prev => {
+
+    setSelectedSeats((prev) => {
       if (prev.includes(seatIndex)) {
-        return prev.filter(i => i !== seatIndex);
+        return prev.filter((i) => i !== seatIndex);
       } else {
         return [...prev, seatIndex];
       }
@@ -42,15 +44,15 @@ const EventDetails = ({ events }) => {
       alert("Please select at least one seat");
       return;
     }
-    
+
     // In a real app, you would send this data to your backend
     // For now, we'll just navigate to payment
-    navigate(`/payment/${event.id}`, { 
-      state: { 
-        event, 
+    navigate(`/payment/${event.id}`, {
+      state: {
+        event,
         selectedSeats,
-        totalPrice: selectedSeats.length * event.price
-      } 
+        totalPrice: selectedSeats.length * event.price,
+      },
     });
   };
 
@@ -59,20 +61,22 @@ const EventDetails = ({ events }) => {
     const seats = [];
     const seatsPerRow = 10;
     const totalRows = Math.ceil(event.totalSeats / seatsPerRow);
-    
+
     for (let row = 0; row < totalRows; row++) {
       const rowSeats = [];
       for (let col = 0; col < seatsPerRow; col++) {
         const seatIndex = row * seatsPerRow + col;
         if (seatIndex >= event.totalSeats) break;
-        
+
         const isBooked = event.bookedSeats[seatIndex];
         const isSelected = selectedSeats.includes(seatIndex);
-        
+
         rowSeats.push(
           <div
             key={seatIndex}
-            className={`seat ${isBooked ? 'booked' : ''} ${isSelected ? 'selected' : ''}`}
+            className={`seat ${isBooked ? "booked" : ""} ${
+              isSelected ? "selected" : ""
+            }`}
             onClick={() => !isBooked && handleSeatSelection(seatIndex)}
           >
             {seatIndex + 1}
@@ -85,36 +89,44 @@ const EventDetails = ({ events }) => {
         </div>
       );
     }
-    
+
     return seats;
   };
 
   return (
     <div className="event-details-page">
       <div className="container">
-        <Link to="/" className="back-link">← Back to Events</Link>  
+        <Link to="/" className="back-link">
+          ← Back to Events
+        </Link>
 
         <div className="event-details-grid">
           <div className="event-main">
             <div className="event-header">
-              <img src={event.image} alt={event.name} className="event-image1" />
+              <img
+                src={event.image}
+                alt={event.name}
+                className="event-image1"
+              />
               <div className="event-meta">
                 <span className="event-type1">{event.type}</span>
                 <h1>{event.name}</h1>
-                <p>📅 {formatDate(event.date)} at {event.time}</p>
+                <p>
+                  📅 {formatDate(event.date)} at {event.time}
+                </p>
                 <p>📍 {event.location}</p>
                 <p>👤 Organized by {event.organizer}</p>
                 <p>💰 ${event.price} per ticket</p>
-                <p>🎟️ Available {event.availableSeats} seat / {event.totalSeats} </p>
+                <p>
+                  🎟️ Available {event.availableSeats} seat / {event.totalSeats}{" "}
+                </p>
               </div>
             </div>
 
             <div className="event-section">
               <h2>Select Your Seats</h2>
               <div className="seats-container">
-                <div className="seats-layout">
-                  {renderSeats()}
-                </div>
+                <div className="seats-layout">{renderSeats()}</div>
                 <div className="seat-legend">
                   <div className="legend-item">
                     <div className="seat available"></div>
@@ -142,7 +154,11 @@ const EventDetails = ({ events }) => {
               <div className="participants-grid">
                 {event.participants.map((p, i) => (
                   <div key={i} className="participant-card">
-                    <img src={p.image} alt={p.name} className="participant-image" />
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="participant-image"
+                    />
                     <div className="participant-info">
                       <h4>Name : {p.name}</h4>
                       <p>Character : {p.role}</p>
@@ -155,34 +171,42 @@ const EventDetails = ({ events }) => {
             <div className="event-section">
               <h2>Schedule</h2>
               <ul className="schedule-list">
-                {event.schedule.map((s, idx) => <li key={idx}>{s}</li>)}
+                {event.schedule.map((s, idx) => (
+                  <li key={idx}>{s}</li>
+                ))}
               </ul>
             </div>
 
             <div className="event-section">
               <h2>Venue Location</h2>
-              <div className="map-container">
-                <iframe
-                  title="Event Venue Map"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0, borderRadius: '12px' }}
-                  loading="lazy"
-                  allowFullScreen
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBKtHiA3NG4ydqkGR9ThM2Ypn0Z8rvsDfk&q=${encodeURIComponent(event.location)}`}
-                ></iframe>
+              <div style={{ marginTop: "10px", textAlign: "center" }}>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    event.location
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="google-map"
+                >
+                  Open in Google Maps
+                </a>
               </div>
             </div>
+            
           </div>
 
           <div className="event-booking">
             <div className="booking-card">
               <h2>Booking Summary</h2>
-              <p className="ticket-info">Selected Seats: {selectedSeats.length}</p>
+              <p className="ticket-info">
+                Selected Seats: {selectedSeats.length}
+              </p>
               <p className="ticket-info">Price per ticket:₹ {event.price}</p>
-              <p className="ticket-info">Total: ₹{selectedSeats.length * event.price}</p>
-              <button 
-                className="book-btn" 
+              <p className="ticket-info">
+                Total: ₹{selectedSeats.length * event.price}
+              </p>
+              <button
+                className="book-btn"
                 onClick={handleBookTicket}
                 disabled={selectedSeats.length === 0}
               >

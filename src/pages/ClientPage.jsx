@@ -153,22 +153,6 @@ const ClientPage = () => {
     }));
   };
 
-  // Function to free a seat
-  const freeSeat = (eventId, seatIndex) => {
-    setEvents(events.map(event => {
-      if (event.id === eventId) {
-        const updatedBookedSeats = [...event.bookedSeats];
-        updatedBookedSeats[seatIndex] = false;
-        
-        return {
-          ...event,
-          bookedSeats: updatedBookedSeats,
-          availableSeats: event.availableSeats + 1
-        };
-      }
-      return event;
-    }));
-  };
 
   return (
     <div className="page-container">
@@ -315,7 +299,7 @@ const ClientPage = () => {
 
       {/* Right Section: Table */}
       <div className="right-section">
-        <h2>Event History</h2>
+        <h2>Event Added History</h2>
         <table>
           <thead>
             <tr>

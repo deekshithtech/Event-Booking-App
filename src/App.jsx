@@ -7,6 +7,7 @@ import EventDetails from './pages/EventDetails'
 import './App.css'
 import Payment from './pages/Payment'
 import ClientPage from './pages/ClientPage'
+import AllEvents from './pages/AllEvents'
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             <Route path="/event/:id" element={<EventDetails events={events} />} />
             <Route path="/payment/:id" element={<Payment events={events} />} />
              <Route path="/client" element={<ClientPage />} />
+             <Route path="/events" element={<AllEvents events={events} />} />
 
           </Routes> 
          

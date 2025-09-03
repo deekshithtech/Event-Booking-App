@@ -2,13 +2,12 @@ import { useState } from 'react'
 import './PaymentModal.css'
 
 const PaymentModal = ({ event, onClose }) => {
-  const [step, setStep] = useState('form') // form, success, failure
+  const [step, setStep] = useState('form') 
   const [tickets, setTickets] = useState(1)
 
   const handlePayment = (e) => {
     e.preventDefault()
-    // simulate payment success/failure
-    const isSuccess = Math.random() > 0.3 // 70% success
+    const isSuccess = Math.random() > 0.3 
     setStep(isSuccess ? 'success' : 'failure')
   }
 
@@ -39,7 +38,7 @@ const PaymentModal = ({ event, onClose }) => {
 
         {step === 'success' && (
           <div className="payment-result success">
-            <h2>🎉 Payment Successful!</h2>
+            <h2>Payment Successful!</h2>
             <p>{tickets} ticket(s) booked for {event.name}</p>
             <p>Total: ${event.price * tickets}</p>
             <button onClick={onClose}>Close</button>
@@ -48,7 +47,7 @@ const PaymentModal = ({ event, onClose }) => {
 
         {step === 'failure' && (
           <div className="payment-result failure">
-            <h2>❌ Payment Failed</h2>
+            <h2> Payment Failed</h2>
             <p>There was an error processing your payment.</p>
             <button onClick={() => setStep('form')}>Try Again</button>
           </div>
