@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import './Payment.css'
+import PaymentModal from '../components/PaymentModal'
 
 const Payment = ({ events }) => {
   const location = useLocation()
@@ -15,6 +16,7 @@ const Payment = ({ events }) => {
   const [paymentMethod, setPaymentMethod] = useState('upi')
   const [card, setCard] = useState({ number: '', name: '', expiry: '', cvv: '' })
   const [event, setEvent] = useState(null)
+  const [showModal, setShowModal] = useState(false) // modal toggle
 
   useEffect(() => {
     const eventFromProps = events.find(e => e.id === id || e.id === parseInt(id))
@@ -55,13 +57,12 @@ const Payment = ({ events }) => {
       return ev
     })
     
-    // Save updated events to localStorage
+   
     localStorage.setItem("events", JSON.stringify(updatedEvents))
     
-    alert(`🎉 Payment Successful (Sandbox Mode)!\n\n${selectedSeats.length} ticket(s) booked for ${event.name}\nSelected Seats: ${selectedSeats.map(s => s + 1).join(', ')}\nTotal: $${totalPrice}`)
+    setShowModal(true)
     
-    // Redirect to home page after successful payment
-    window.location.href = '/'
+    // window.location.href = '/'
   }
 
   if (!event) {
@@ -200,6 +201,17 @@ const Payment = ({ events }) => {
           </form>
         </div>
       </div>
+     {showModal && (
+  <PaymentModal
+    event={event}
+    selectedSeats={selectedSeats}
+    totalPrice={totalPrice}
+    onClose={() => {
+      setShowModal(false)
+      window.location.href = '/' // redirect home after closing modal
+    }}
+  />
+)}
     </div>
   )
 }
